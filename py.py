@@ -11,7 +11,7 @@ pagosPosibles = [
 
 class EstrategiasPosibles(Enum):
     """define nombres de estrategias"""
-    TitForTat = "TitForTat"
+    TitForThat = "TitForThat"
     Angel = "Angel"
     Grudge = "Grudge"
     Random = "Random"
@@ -64,7 +64,7 @@ def correrJuego(
 def strToFunction(string: EstrategiasPosibles) -> callable:
     """retorna funcion de estrategia dado un nombre de funcion"""
     funciones: dict(EstrategiasPosibles, callable) = {
-        EstrategiasPosibles.TitForTat: titForTat,
+        EstrategiasPosibles.TitForThat: titForThat,
         EstrategiasPosibles.Angel: angel,
         EstrategiasPosibles.Grudge: grudge,
         EstrategiasPosibles.Random: random,
@@ -80,7 +80,7 @@ class Params(TypedDict):
 
 
 # estrategias
-def titForTat(params: Params) -> Move:
+def titForThat(params: Params) -> Move:
     """se copia del movimiento anterior del otro jugador
     en el primer turno coopera por defecto"""
     movimientoOponenteAnterior = params["movimientoOponenteAnterior"]
@@ -145,7 +145,7 @@ class Casos:
         """caso 2: Grudge y Tit for Tat"""
         resultados = correrJuego(
             EstrategiasPosibles.Grudge,
-            EstrategiasPosibles.TitForTat,
+            EstrategiasPosibles.TitForThat,
         )
         print("----------------CASO 2----------------")
         print("100 iteraciones, Grudge y Tit for Tat")
@@ -154,10 +154,10 @@ class Casos:
 
     @staticmethod
     def caso3():
-        """caso 3: Custom y Tit for Tat"""
+        """caso 3: Custom y Tit for That"""
         resultados = correrJuego(
             EstrategiasPosibles.Custom,
-            EstrategiasPosibles.TitForTat,
+            EstrategiasPosibles.TitForThat,
         )
         print("----------------CASO 3----------------")
         print("100 iteraciones, Custom y Tit for Tat")
